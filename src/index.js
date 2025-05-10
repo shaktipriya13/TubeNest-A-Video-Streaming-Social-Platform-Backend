@@ -2,10 +2,30 @@
 
 // * APPROACH 2: writing db code even in db folder separately
 import dotenv from "dotenv";
-dotenv.config({ path: './env' })
+dotenv.config() //it seraches for .env file by default.no need  to provide the path
 import connectDB from "./db/index.js";
+import { app } from "./app.js";
 
-connectDB();
+// when an asynchronus mthd is completed then a promise is also returned  
+const port = process.env.PORT || 5000;
+connectDB()  //promise
+    .then(() => {
+        // app.listen: it happens if connection to db connects successfully
+        // Start server only after DB connects
+        const server = app.listen(port, () => {
+            console.log(`Server is listening at port ${port}`);
+        });
+
+        // Listen for errors on the server
+        // This is a solid practice.It ensures any unexpected server issues(e.g., port conflict) are logged clearly.
+        server.on("error", (err) => {
+            console.log("Server error:", err);
+            throw err;
+        });
+    })
+    .catch((e) => {
+        console.error('mondoDB connect failed:', e);
+    })
 
 
 
@@ -36,7 +56,7 @@ const app = express();
             console.log(`app is listening on port- ${process.env.PORT}`);
         })
     } catch (e) {
-        console.error('erroe occurred:', e);
+        console.error('error occurred:', e);
         throw e
         // console.log() is same as console.error
     }
