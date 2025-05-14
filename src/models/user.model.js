@@ -41,6 +41,7 @@ const userSchema = new Schema({
     watchHistory: [
         // watchHistory is an array
         {
+            // by default it will be 0
             type: Schema.Types.ObjectId,
             ref: "Video"
         }
@@ -50,6 +51,8 @@ const userSchema = new Schema({
         required: [true, 'Password is required']
     },
     refreshToken: {
+        // refresh tokens are not required when the user registers
+        // by default it will be empty
         type: String
     }
 }, {
@@ -57,10 +60,11 @@ const userSchema = new Schema({
 })
 
 userSchema.pre("save", async function (next) {
+    // password will be automaticlly encrypted while saving
     // this code is run only when the password field is modified
     if (!this.isModified("password")) return next;
 
-    this.password = bcrypt.hash(this.password, 10);
+    this.password = await bcrypt.hash(this.password, 10);//pswrd encrypt time also takes...so used await
     next()
 })
 
@@ -96,3 +100,5 @@ userSchema.methods.generateRefreshToken = function () {
 
 // jwt package has sign method which generates the token
 export const User = mongoose.model("User", userSchema);
+// ye export hua jo User ha it can directly contact the db
+// this User can call mongodb in controller.js
