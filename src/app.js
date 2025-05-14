@@ -7,10 +7,11 @@ const app = express();
 // ek mthd ke through express ki sari fxnalities app me transfer hoti ha
 
 // ! following 3 lines of code(app.use({})) are called as configurations
+// * Middlewares:
 // when an asynchronus mthd is completed then a promise is also returned 
 app.use(cors({
-    origin: process.env.CORS_ORIGIN,
-    credentials: true
+  origin: process.env.CORS_ORIGIN,
+  credentials: true
 }))
 
 app.use(express.json({ limit: "16kb" }))
@@ -30,5 +31,21 @@ app.use(express.static("public"))
 
 app.use(cookieParser())
 // ! above 3 are major configurations used everywhere
+
+
+// * Importing and Writing routes here in app.js
+
+import userRouter from './routes/user.routes.js'//manchaha nam hum tabhi de skte ha jab export default ho rha ho
+// jab routers and controllers are written in diff files and routers hv to be imported then we hv to use a middleware ie. we need to use app.use() instead of app.get()
+
+//routes declaration
+// as per standard practices we need to define api and its versioning also
+app.use('/users', userRouter)
+app.use('/api/v1/users', userRouter)
+// works like below
+// * app.js -> user.routes.js -> user.controller.js
+// TODO the finally called url will be http://localhost:8000/api/v1/users/register ...this is a kind of api which the frontend can hit
+// TODO this api can be tested with thunderClient
+// TODO yha route ka nam register ha and method ka name is registerUser
 
 export { app }

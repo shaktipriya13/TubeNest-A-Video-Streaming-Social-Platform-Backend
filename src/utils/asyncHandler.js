@@ -1,6 +1,7 @@
 // this will just create a mthd and export it
 
-// A higher order function in JavaScript is a function that takes another function as an argument or returns a function.
+// A higher order function in JavaScript is a function that takes another function as an argument and returns aswell a function.
+// asyncHandler is a higher order fxn
 
 //* 2nd mthd: using promises: IMP
 const asyncHandler = (requestHandler) => {

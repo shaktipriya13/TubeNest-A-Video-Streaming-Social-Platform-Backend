@@ -6,7 +6,8 @@ videoTutExplained
 # Dependency directories: these can be recreated
 node_modules/
 jspm_packages/
-
+notes.txt
+notes.md
 
 ## .gitignore generator 
 # Logs
