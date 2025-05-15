@@ -20,7 +20,8 @@ export const verifyJWT = asyncHandler(async (req, _, next) => {
             throw new ApiError(401, "Unauthorized request.")
         }
 
-        // generated tokens are encoded which can be decoded only by jwt bcoz they hav public key secret
+        // generated tokens are encoded and then sent to user. But they can be decoded only by jwt bcoz they hav public key secret and now we can receive the decoded web token.
+        // we always want raw token which is stored in db
         const decodedTokenInfo = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
 
         const user = await User.findById(decodedTokenInfo?._id).select("-password -refreshToken")

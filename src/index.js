@@ -2,7 +2,7 @@
 
 // * APPROACH 2: writing db code even in db folder separately
 import dotenv from "dotenv";
-dotenv.config({ path: './env' }) //it seraches for .env file by default. good practice to provide the path
+dotenv.config({ path: './.env' }) //it seraches for .env file by default. good practice to provide the path
 import connectDB from "./db/index.js";
 import { app } from "./app.js";
 
@@ -27,7 +27,10 @@ connectDB()  //promise
         console.error('mondoDB connect failed:', e);
     })
 
-
+console.log("ACCESS_TOKEN_SECRET:", process.env.ACCESS_TOKEN_SECRET);
+console.log("ACCESS_TOKEN_EXPIRY:", process.env.ACCESS_TOKEN_EXPIRY);
+console.log("REFRESH_TOKEN_SECRET:", process.env.REFRESH_TOKEN_SECRET);
+console.log("REFRESH_TOKEN_EXPIRY:", process.env.REFRESH_TOKEN_EXPIRY);
 
 // * APPROACH 1: writing db code even in index.js
 /*
