@@ -41,7 +41,8 @@ const registerUser = asyncHandler(async (req, res) => {
     // note: Params is also a way to send data from frontend
     // but we will send data in postman through body(form/xform/rawdata(in json form))
     const { fullName, email, username, password } = req.body //req.body will store now user details
-    console.log("email: ", email);
+    console.log("body is : ", req.body);
+    // console.log("email: ", email);
 
     if (
         [fullName, email, username, password].some((field) =>
@@ -61,7 +62,7 @@ const registerUser = asyncHandler(async (req, res) => {
     // $or is a logical operator in MongoDB that allows you to specify multiple conditions, and at least one of them must be true for a document to match.
     // & both the username and email must be diff. from user.model.js
 
-    const existedUser = User.findOne({
+    const existedUser = await User.findOne({
         $or: [{ username }, { email }]
     })
     if (existedUser) {
@@ -76,8 +77,17 @@ const registerUser = asyncHandler(async (req, res) => {
     // we may or may not hv access to files...so we check conditionally
     // TODO watch again : v14  31:38
 
-    const avatarLocalPath = req.files?.avatar[0]?.path;
-    const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    const avatarLocalPath = req.files?.avatar[0]?.path;//means if req.files is present ..then take 1st object from it and then take path from it
+    // const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    let coverImageLocalPath;
+    // if user don't uploads the cover image then cloudinary returns an empty string
+
+    if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
+        // Makes sure that at least one coverImage file was uploaded
+        coverImageLocalPath = req.files.coverImage[0].path
+    }
+
+    console.log(req.files);
     // since avatar is needed
 
     // A 400 Bad Request error is an HTTP status code that means:  "The server couldn't understand your request because it was malformed or missing required data."
@@ -88,6 +98,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
     const avatar = await uploadOnCloudinary(avatarLocalPath); //we need to wait a while until the file is uploaded on cloudinary ...it would take time
     const coverImage = await uploadOnCloudinary(coverImageLocalPath);
+
 
     if (!avatar) { //ye chking hogi if cloudinary has sent response url or not successfully
         throw new ApiError(500, "Avatar upload failed. Please try again.")
@@ -114,7 +125,7 @@ const registerUser = asyncHandler(async (req, res) => {
     )
 
     if (!createdUser) {
-        throw ApiError(500, "Something went wrong while registering the user.")
+        throw new ApiError(500, "Something went wrong while registering the user.")
     }
 
     // ! nxt step: if user gets properly created: send a response

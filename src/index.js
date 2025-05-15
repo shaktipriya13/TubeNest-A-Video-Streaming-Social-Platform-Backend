@@ -2,7 +2,7 @@
 
 // * APPROACH 2: writing db code even in db folder separately
 import dotenv from "dotenv";
-dotenv.config() //it seraches for .env file by default.no need  to provide the path
+dotenv.config({ path: './env' }) //it seraches for .env file by default. good practice to provide the path
 import connectDB from "./db/index.js";
 import { app } from "./app.js";
 

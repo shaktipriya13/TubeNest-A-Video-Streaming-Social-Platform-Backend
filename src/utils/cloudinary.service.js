@@ -35,9 +35,11 @@ const uploadOnCloudinary = async (localFilePath) => {
             resource_type: "auto"//auto detect krlo file type
         })
         // if file uploaded successfully
-        console.log("file is uploaded on cloudinary", response.url);//will print on console the public url after the file upload
         // & Returns the public Cloudinary URL |
         // even if file uploads sucessfully on cloudinary we ought to remove this file from the server
+
+        fs.unlinkSync(localFilePath)//removes the locally saved file even if the file upload was successful
+        console.log(response);
         return response;
         // cloudinary file sends url in form of response 
 
