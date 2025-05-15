@@ -4,8 +4,27 @@ import { User } from '../models/user.model.js'
 import { uploadOnCloudinary } from '../utils/cloudinary.service.js'
 import { ApiResponse } from '../utils/ApiResponse.js'
 
-// this User can call mongodb while chking if user already exists or not
+// ^ generate and access tokens will be used in many places..so we make a method for it
+const generateAccessAndRefreshToken = async (userId) => {
+    try {
+        // access token is just given to user but we store refresh token in our server's db so that bar bar user se password nhi puchna pre
+        const user = await User.findById(userId);
+        const accessToken = User.generateAccessToken()
+        const refreshToken = User.generateRefreshToken()
 
+        user.refreshToken = refreshToken
+        await user.save({ validateBeforeSave: false })
+        // In Mongoose, user.save() is used to save changes made to a Mongoose document (like user) to the MongoDB database.
+        // By default, when you call .save(), Mongoose validates all the fields based on the schema before saving.Sometimes, you only want to update just one field, like refreshToken, without needing to revalidate all other required fields (like password, avatar, etc.).
+
+        return { accessToken, refreshToken };
+
+    } catch (err) {
+        throw new ApiError(500, "Something went wrong while generating access and refresh token.")
+    }
+}
+
+// this User can call mongodb while chking if user already exists or not
 
 // //fxn to register a user: below is a fixed syntax that we hv to use everytime
 // const registerUser = asyncHandler(async (req, res) => {
@@ -16,6 +35,8 @@ import { ApiResponse } from '../utils/ApiResponse.js'
 //         message: "chai ausadsar code"
 //     })
 // })
+
+
 
 const registerUser = asyncHandler(async (req, res) => {
     // & steps hi algorithm hote ha
@@ -134,4 +155,93 @@ const registerUser = asyncHandler(async (req, res) => {
     )
 })
 
-export { registerUser }
+//& 2nd fxn: login user
+const loginUser = asyncHandler(async (req, res) => {
+    // * steps:
+    // fetch data from req.body
+    // depends on which (out of username or email) we want to give access to user
+    // find the user
+    // check for password
+    // generate both access and refresh token and send it to user
+    // send these tokens in secured cookies
+    // send respons of successfully login
+
+    const { email, password, username } = req.body;
+    if (!username || !email) {
+        throw new ApiError(400, "either of username or email is required.")
+    }
+
+    const user = User.findOne({
+        // user is created by me which is an instance of the database
+        $or: [{ username, email }]
+    })
+
+    if (!user) {
+        throw new ApiError(404, "User does not exist.")
+    }
+
+    // & next step: chk if password is correct
+    const isPasswordValid = await user.isPasswordCorrect(password)
+    if (!isPasswordValid) {
+        // 401 : Unauthorized access
+        throw new ApiResponse(401, "Invalid user credentials.")
+    }
+
+    // & chking for access and refresh token
+    const { accessToken, refreshToken } = await generateAccessAndRefreshToken(user._id)
+    // const {accessToken,refreshToken}: this is called destructing 
+
+    const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
+
+    // when we send cookies we need to design options where options is an object
+    const options = {//cookie settings
+        httpOnly: true,
+        secure: true,//by this the cookies can only be modified by server and not frontend
+    }
+
+    return res
+        .status(200)
+        .cookie("accessToken", accessToken, options)
+        .cookie("refreshToken", refreshToken, options)
+        .json(
+            new ApiResponse(200,
+                {
+                    user: loggedInUser, accessToken,
+                    refreshToken
+                },
+                "User logged in sucessfully."
+            )
+        )
+    //we can set many more cookies by useing dot operator
+})
+
+// & next functionality:user logout
+// steps:
+// firstly remove all the cookies as they could only be managed by the server
+// the refrsh token also needs to get removed from the mongodb 
+const logoutUser = asyncHandler(async (req, res) => {
+    await User.findByIdAndUpdate(
+        req.user._id,
+        {
+            $set: {
+                refreshToken: undefined
+                //as the refresh token becomes undefined the user gets logged out
+            }
+        },
+        {
+            new: true
+        }
+    )
+    const options = {//cookie settings
+        httpOnly: true,
+        secure: true,//by this the cookies can only be modified by server and not frontend
+    }
+
+    return res
+    .status(200)
+    .clearCookie("accessToken",options)
+    .clearCookie("refreshToken",options)
+    .json(new ApiResponse(200, {}, "User logged out successfully."))
+})
+
+export { registerUser, loginUser, logoutUser }
