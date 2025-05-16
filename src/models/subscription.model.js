@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 // both subscriber and channel are users
+// both channel and user refers to the same things actually
 const subscripionSchema = new Schema({
     subscriber:{
         type: Schema.Types.ObjectId,//one who is subscribing

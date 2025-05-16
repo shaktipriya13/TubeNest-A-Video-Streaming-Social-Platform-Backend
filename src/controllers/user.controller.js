@@ -326,6 +326,11 @@ const logoutUser = asyncHandler(async (req, res) => {
             $set: {
                 refreshToken: undefined // Set the refreshToken field to undefined (this logs the user out by invalidating their session)
             }
+
+            /*try this sir said if logout not working:
+                        $unset:{
+                            refreshToken:1//this removes the field from the document
+            } */
         },
         {
             new: true // This option makes the function return the updated user (though we’re not using it here)
