@@ -24,6 +24,7 @@ const videoSchema = new Schema({
         required: true
     },
     views: {
+        // views hav to be injected jaise jaise har model par aayega
         type: Number, default: 0
     },
     isPublished: {//means is the video publicly available or not
