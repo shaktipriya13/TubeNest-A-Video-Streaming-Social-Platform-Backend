@@ -9,7 +9,7 @@ node_modules/
 jspm_packages/
 notes.txt
 notes.md
-
+usingPostmanInstrucitons.md
 ## .gitignore generator 
 # Logs
 logs
