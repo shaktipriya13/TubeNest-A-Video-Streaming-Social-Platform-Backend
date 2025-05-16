@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
+// It imports a plugin that adds pagination support to MongoDB aggregation queries using Mongoose.
 
 const videoSchema = new Schema({
     videoFile: {
@@ -28,7 +29,7 @@ const videoSchema = new Schema({
     isPublished: {//means is the video publicly available or not
         type: Boolean, default: true
     },
-    owner: {
+    creator: {
         type: Schema.Types.ObjectId, ref: "User"
     }
 }, { timestamps: true })
