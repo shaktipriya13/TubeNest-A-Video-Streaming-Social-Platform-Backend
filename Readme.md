@@ -3,27 +3,18 @@
 ![TubeNest Backend](https://img.shields.io/badge/Node.js-Express.js-green)
 A scalable RESTful API backend for  **TubeNest** , a YouTube-like platform where users can upload videos, comment, like, subscribe to channels, and create playlists. Built with  **Node.js** ,  **Express.js** ,  **MongoDB** , and **Cloudinary** for media management.
 
-## Table of Contents
+### Key Features
 
-* [Features](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#features)
-* [Tech Stack](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#tech-stack)
-* [Project Structure](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#project-structure)
-* [Setup Instructions](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#setup-instructions)
-* [Environment Variables](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#environment-variables)
-* [API Endpoints](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#api-endpoints)
-* [Testing](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#testing)
-* [Contributing](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#contributing)
-* [License](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#license)
-
-## Features
-
-* **User Authentication** : Secure registration, login, and logout with JWT-based authentication.
-* **Video Uploads** : Users can upload videos and thumbnails using Cloudinary for media storage.
-* **Social Interactions** : Comment on videos, like videos/comments, and subscribe to channels.
-* **Playlists** : Create and manage playlists with videos.
-* **Health Check** : Monitor server and dependency status with a `/api/v1/healthcheck` endpoint.
-* **Scalability** : Pagination for video and comment feeds using `mongoose-aggregate-paginate-v2`.
-* **Modular Architecture** : Organized into controllers, routes, models, and utilities for maintainability.
+* **User Management** : Register, login, logout, update profile, and manage avatars for user accounts.
+* **Video Uploads** : Upload, store, and manage videos and thumbnails using Cloudinary integration.
+* **Social Interactions** : Comment on videos, like videos/comments, and create tweets for community engagement.
+* **Subscription System** : Subscribe to channels with role-based access for subscribers.
+* **Playlist Management** : Create and manage playlists with video collections.
+* **Authentication** : Secure JWT-based authentication for user actions like uploads and comments.
+* **Media Management** : Cloudinary for efficient handling of video files, thumbnails, and user avatars.
+* **Health Monitoring** : Health check endpoint to monitor server and dependency status (MongoDB, Cloudinary).
+* **Scalable Feeds** : Paginated video and comment feeds using mongoose-aggregate-paginate-v2.
+* **Error Handling** : Custom error and response classes (ApiError, ApiResponse) for consistent API responses.
 
 ## Tech Stack
 
