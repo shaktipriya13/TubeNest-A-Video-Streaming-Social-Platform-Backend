@@ -111,6 +111,7 @@ try {
 
 const app = express();
 
+// Root route with styled HTML
 app.get("/", (req, res) => {
   res.status(200).send(`
     <!DOCTYPE html>
@@ -121,7 +122,7 @@ app.get("/", (req, res) => {
       <title>TubeNest Backend API</title>
       <style>
         body {
-          background-color: #f0f4f8; /* Light blue-gray background */
+          background-color: rgb(78, 156, 234);
           font-family: 'Arial', sans-serif;
           display: flex;
           justify-content: center;
@@ -133,22 +134,22 @@ app.get("/", (req, res) => {
           text-align: center;
           padding: 20px;
           border-radius: 10px;
-          background-color: #ffffff; /* White container background */
+          background-color: #ffffff;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         h1 {
-          color: #2c3e50; /* Dark blue-gray text */
+          color: #2c3e50;
           font-size: 36px;
           font-family: 'Georgia', serif;
           margin-bottom: 10px;
         }
         p {
-          color: #34495e; /* Slightly lighter blue-gray text */
+          color: #34495e;
           font-size: 18px;
           margin: 5px 0;
         }
         a {
-          color: #3498db; /* Bright blue for links */
+          color: #3498db;
           text-decoration: none;
           font-weight: bold;
         }
@@ -169,7 +170,67 @@ app.get("/", (req, res) => {
   `);
 });
 
-// Middleware configurations
+// Add a route for /api/v1
+app.get("/api/v1", (req, res) => {
+  res.status(200).send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>TubeNest API Base Path</title>
+      <style>
+        body {
+          background-color:rgb(78, 156, 234);
+          font-family: 'Arial', sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+        }
+        .container {
+          text-align: center;
+          padding: 20px;
+          border-radius: 10px;
+          background-color: #ffffff;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+          color: #2c3e50;
+          font-size: 36px;
+          font-family: 'Georgia', serif;
+          margin-bottom: 10px;
+        }
+        p {
+          color: #34495e;
+          font-size: 18px;
+          margin: 5px 0;
+        }
+        a {
+          color: #3498db;
+          text-decoration: none;
+          font-weight: bold;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <h1>TubeNest API Base Path</h1>
+        <p>This is the base path for all API endpoints: <strong>/api/v1</strong></p>
+        <p>Try these endpoints:</p>
+        <p><a href="/api/v1/healthcheck">GET /api/v1/healthcheck</a> - Check server health</p>
+        <p><a href="https://github.com/shaktipriya13/TubeNest-A-Video-Streaming-Social-Platform-Backend#api-documentation">See all endpoints in the API Documentation</a></p>
+        <p><a href="/">Back to Home</a></p>
+      </div>
+    </body>
+    </html>
+  `);
+});
+
 app.use(cors({
   origin: process.env.CORS_ORIGIN || 'http://localhost:5173', // Default to frontend URL if CORS_ORIGIN is not set
   credentials: true
