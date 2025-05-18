@@ -1,21 +1,8 @@
-
 # TubeNest Backend
 
+ **Note** : For the best experience, view this `README.md` on GitHub at [https://github.com/shaktipriya13/TubeNest-A-Video-Streaming-Social-Platform-Backend](https://github.com/shaktipriya13/TubeNest-A-Video-Streaming-Social-Platform-Backend). Table of Contents links may not work correctly in other environments.
+
 TubeNest is a scalable RESTful API backend for a YouTube-like video streaming and social platform. Users can upload videos, like, subscribe to channels, manage playlists, and view analytics on a dashboard. Built with Node.js, Express.js, MongoDB, and Cloudinary, it offers secure authentication, efficient media handling, and paginated feeds.
-
-## Table of Contents
-
-* [Key Features](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#key-features)
-* [Tech Stack](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#tech-stack)
-* [Live Deployment](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#live-deployment)
-* [API Documentation](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#api-documentation)
-* [Setup Locally](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#setup-locally)
-* [Project Structure](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#project-structure)
-* [Environment Variables](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#environment-variables)
-* [API Endpoints](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#api-endpoints)
-* [Testing](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#testing)
-* [Contributing](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#contributing)
-* [License](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#license)
 
 ## Key Features
 
