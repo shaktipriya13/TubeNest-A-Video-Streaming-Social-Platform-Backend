@@ -111,6 +111,64 @@ try {
 
 const app = express();
 
+app.get("/", (req, res) => {
+  res.status(200).send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>TubeNest Backend API</title>
+      <style>
+        body {
+          background-color: #f0f4f8; /* Light blue-gray background */
+          font-family: 'Arial', sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+        }
+        .container {
+          text-align: center;
+          padding: 20px;
+          border-radius: 10px;
+          background-color: #ffffff; /* White container background */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+          color: #2c3e50; /* Dark blue-gray text */
+          font-size: 36px;
+          font-family: 'Georgia', serif;
+          margin-bottom: 10px;
+        }
+        p {
+          color: #34495e; /* Slightly lighter blue-gray text */
+          font-size: 18px;
+          margin: 5px 0;
+        }
+        a {
+          color: #3498db; /* Bright blue for links */
+          text-decoration: none;
+          font-weight: bold;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <h1>Welcome to TubeNest Backend API!</h1>
+        <p>Explore the API documentation on <a href="https://github.com/shaktipriya13/TubeNest-A-Video-Streaming-Social-Platform-Backend">GitHub</a>.</p>
+        <p>Check the server status at <a href="/api/v1/healthcheck">/api/v1/healthcheck</a>.</p>
+        <p>API Base Path: <a href="/api/v1">/api/v1</a></p>
+      </div>
+    </body>
+    </html>
+  `);
+});
+
 // Middleware configurations
 app.use(cors({
   origin: process.env.CORS_ORIGIN || 'http://localhost:5173', // Default to frontend URL if CORS_ORIGIN is not set

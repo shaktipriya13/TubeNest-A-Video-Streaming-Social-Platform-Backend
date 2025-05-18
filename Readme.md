@@ -18,7 +18,6 @@ TubeNest is a scalable RESTful API backend for a YouTube-like video streaming an
 * [API Endpoints](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#api-endpoints)
 * [Testing](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#testing)
 * [Contributing](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#contributing)
-* [License](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#license)
 
 ## Key Features
 
