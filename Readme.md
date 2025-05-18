@@ -1,6 +1,5 @@
 # TubeNest Backend
 
- **Note** : For the best experience, view this `README.md` on GitHub at [https://github.com/shaktipriya13/TubeNest-A-Video-Streaming-Social-Platform-Backend](https://github.com/shaktipriya13/TubeNest-A-Video-Streaming-Social-Platform-Backend). Table of Contents links may not work correctly in other environments.
 
 TubeNest is a scalable RESTful API backend for a YouTube-like video streaming and social platform. Users can upload videos, like, subscribe to channels, manage playlists, and view analytics on a dashboard. Built with Node.js, Express.js, MongoDB, and Cloudinary, it offers secure authentication, efficient media handling, and paginated feeds.
 
