@@ -1,0 +1,1509 @@
+{
+	"info": {
+		"_postman_id": "30c7fccb-e152-4d17-b8a4-a1b835a9dd7f",
+		"name": "TubeNest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37155607"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Public Routes",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "fullName",
+											"value": "Radha kumari",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "abcdefgh",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "Radhika",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "shyam@Kishori.com",
+											"type": "text"
+										},
+										{
+											"key": "avatar",
+											"type": "file",
+											"src": "/D:/USERS from C drive/Downloads/pexels-dwanghong-30363759.jpg"
+										},
+										{
+											"key": "coverImage",
+											"type": "file",
+											"src": "/D:/USERS from C drive/Downloads/pexels-ayyeee-ayyeee-434363205-19571550.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/users/register",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"users",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "refreshToken",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJpYXQiOjE3NDczOTQxMTMsImV4cCI6MTc0ODI1ODExM30.3AKEvYLD-2tvR0oUAYFGzQ-MXh-oswdKZBE6u24EHLo; Path=/; Secure; HttpOnly\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/users/refresh-token",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"users",
+										"refresh-token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\":\"newpassword456\",\r\n    \"email\":\"updateduser@example.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/users/login",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "**Public Routes** (No authentication needed):  \n\n- POST /api/v1/users/register: Register a new user (requires file uploads for avatar and optionally coverImage).\n    \n- POST /api/v1/users/login: Log in a user.\n    \n- POST /api/v1/users/refresh-token: Refresh the access token."
+				},
+				{
+					"name": "Secured Routes",
+					"item": [
+						{
+							"name": "change-password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"oldPassword\": \"123456788\",\r\n    \"newPassword\": \"newpassword456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/users/change-password",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"users",
+										"change-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "current-user",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/users/current-user",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"users",
+										"current-user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update-account",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullName\": \"mithiPriya\",\r\n    \"email\": \"updateduser@example.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/users/update-account",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"users",
+										"update-account"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logout",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/users/logout",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"users",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Avatar",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "avatar",
+											"type": "file",
+											"src": "/D:/USERS from C drive/OneDrive/Desktop/previous Screenshots pics/Screenshot (332).png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/users/update-avatar",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"users",
+										"update-avatar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update-cover-image",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "coverImage",
+											"type": "file",
+											"src": "/D:/USERS from C drive/OneDrive/Desktop/previous Screenshots pics/Screenshot (462).png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/users/update-cover-image",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"users",
+										"update-cover-image"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "**Secured Routes** (Require authentication via accessToken):  \n\n- POST /api/v1/users/logout: Log out a user.\n    \n- POST /api/v1/users/change-password: Change the user’s password.\n    \n- GET /api/v1/users/current-user: Fetch the current user’s details.\n    \n- PATCH /api/v1/users/update-account: Update the user’s fullName and email.\n    \n- POST /api/v1/users/update-avatar: Update the user’s avatar (requires file upload).\n    \n- POST /api/v1/users/update-cover-image: Update the user’s cover image (requires file upload)."
+				},
+				{
+					"name": "Subscriptions",
+					"item": []
+				}
+			]
+		},
+		{
+			"name": "Video",
+			"item": [
+				{
+					"name": "publish video",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJlbWFpbCI6InVwZGF0ZWR1c2VyQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJzaGFrdGkiLCJmdWxsTmFtZSI6Im1pdGhpUHJpeWEiLCJpYXQiOjE3NDc1NjIxMjUsImV4cCI6MTc0NzY0ODUyNX0.Zjwuz6qGZux0JDGC2x7ipEoPC1hMP2VsMSzz0WDtejY; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "part 2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "part 12",
+									"type": "text"
+								},
+								{
+									"key": "videoFile",
+									"type": "file",
+									"src": "/D:/USERS from C drive/Downloads/2575219-hd_1920_1080_24fps.mp4"
+								},
+								{
+									"key": "thumbnail",
+									"type": "file",
+									"src": "/D:/USERS from C drive/Downloads/pexels-dwanghong-30363759.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/videos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"videos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all videos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJlbWFpbCI6InVwZGF0ZWR1c2VyQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJzaGFrdGkiLCJmdWxsTmFtZSI6Im1pdGhpUHJpeWEiLCJpYXQiOjE3NDc0NTg5MjcsImV4cCI6MTc0NzU0NTMyN30.c_-rJRWGNdFkjsrNHRSRAz6_xlA0Tb9ptqNY6T2gmew; Path=/; Secure; HttpOnly",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "my first video",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This is a test video.",
+									"type": "text"
+								},
+								{
+									"key": "videoFile",
+									"type": "file",
+									"src": "/D:/USERS from C drive/Downloads/Samarth & Nandini.mp4"
+								},
+								{
+									"key": "thumbnail",
+									"type": "file",
+									"src": "/D:/USERS from C drive/OneDrive/Desktop/previous Screenshots pics/ss2/Screenshot 2024-11-02 223410.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/videos?page=1&limit=2&query=test&sortBy=views&sortType=desc&userId=68270b7dd97d0846fbccd9da",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"videos"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "query",
+									"value": "test"
+								},
+								{
+									"key": "sortBy",
+									"value": "views"
+								},
+								{
+									"key": "sortType",
+									"value": "desc"
+								},
+								{
+									"key": "userId",
+									"value": "68270b7dd97d0846fbccd9da"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getVideoById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJlbWFpbCI6InVwZGF0ZWR1c2VyQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJzaGFrdGkiLCJmdWxsTmFtZSI6Im1pdGhpUHJpeWEiLCJpYXQiOjE3NDc0NzExMTUsImV4cCI6MTc0NzU1NzUxNX0.s-lPpe7wf5nq9wYlvLCdHKT-o3-Dp0VHYYQT5Qbo85M; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "my first video",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This is a test video.",
+									"type": "text"
+								},
+								{
+									"key": "videoFile",
+									"type": "file",
+									"src": "/D:/USERS from C drive/Downloads/Samarth & Nandini.mp4"
+								},
+								{
+									"key": "thumbnail",
+									"type": "file",
+									"src": "/D:/USERS from C drive/OneDrive/Desktop/previous Screenshots pics/ss2/Screenshot 2024-11-02 223410.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/videos/68284546d1f4c3fb53ecbe42",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"videos",
+								"68284546d1f4c3fb53ecbe42"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateVideo",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJlbWFpbCI6InVwZGF0ZWR1c2VyQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJzaGFrdGkiLCJmdWxsTmFtZSI6Im1pdGhpUHJpeWEiLCJpYXQiOjE3NDc0NTg5MjcsImV4cCI6MTc0NzU0NTMyN30.c_-rJRWGNdFkjsrNHRSRAz6_xlA0Tb9ptqNY6T2gmew; Path=/; Secure; HttpOnly",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Updated Video Title",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This is an updated description for the video.",
+									"type": "text"
+								},
+								{
+									"key": "videoFile",
+									"type": "file",
+									"src": "/D:/USERS from C drive/Downloads/Samarth & Nandini.mp4",
+									"disabled": true
+								},
+								{
+									"key": "thumbnail",
+									"type": "file",
+									"src": "/D:/USERS from C drive/OneDrive/Desktop/previous Screenshots pics/ss2/Screenshot 2024-11-02 223410.png"
+								},
+								{
+									"key": "title",
+									"value": "updated video Shiva",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/videos/68281bfa3d649229be95b79c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"videos",
+								"68281bfa3d649229be95b79c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "togglePublishStatus",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJlbWFpbCI6InVwZGF0ZWR1c2VyQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJzaGFrdGkiLCJmdWxsTmFtZSI6Im1pdGhpUHJpeWEiLCJpYXQiOjE3NDc0NTg5MjcsImV4cCI6MTc0NzU0NTMyN30.c_-rJRWGNdFkjsrNHRSRAz6_xlA0Tb9ptqNY6T2gmew; Path=/; Secure; HttpOnly",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "my first video",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This is a test video.",
+									"type": "text"
+								},
+								{
+									"key": "videoFile",
+									"type": "file",
+									"src": "/D:/USERS from C drive/Downloads/Samarth & Nandini.mp4"
+								},
+								{
+									"key": "thumbnail",
+									"type": "file",
+									"src": "/D:/USERS from C drive/OneDrive/Desktop/previous Screenshots pics/ss2/Screenshot 2024-11-02 223410.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/videos/toggle/publish/68281bfa3d649229be95b79c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"videos",
+								"toggle",
+								"publish",
+								"68281bfa3d649229be95b79c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteVideo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJlbWFpbCI6InVwZGF0ZWR1c2VyQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJzaGFrdGkiLCJmdWxsTmFtZSI6Im1pdGhpUHJpeWEiLCJpYXQiOjE3NDc0NTg5MjcsImV4cCI6MTc0NzU0NTMyN30.c_-rJRWGNdFkjsrNHRSRAz6_xlA0Tb9ptqNY6T2gmew; Path=/; Secure; HttpOnly",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "my first video",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This is a test video.",
+									"type": "text"
+								},
+								{
+									"key": "videoFile",
+									"type": "file",
+									"src": "/D:/USERS from C drive/Downloads/Samarth & Nandini.mp4"
+								},
+								{
+									"key": "thumbnail",
+									"type": "file",
+									"src": "/D:/USERS from C drive/OneDrive/Desktop/previous Screenshots pics/ss2/Screenshot 2024-11-02 223410.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/videos/6828160d3d649229be95b791",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"videos",
+								"6828160d3d649229be95b791"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "get all comments on a particular video",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJlbWFpbCI6InVwZGF0ZWR1c2VyQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJzaGFrdGkiLCJmdWxsTmFtZSI6Im1pdGhpUHJpeWEiLCJpYXQiOjE3NDc0NzYwNjMsImV4cCI6MTc0NzU2MjQ2M30.jLY3UzbFHCDLhiXk9QRMtM0FTU0uLTNbODwYrdvORqI; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/comments/68284546d1f4c3fb53ecbe42",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"68284546d1f4c3fb53ecbe42"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a comment on  a video",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"This is my first comment on the video!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/comments/<video1-id>",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"<video1-id>"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a comment on  a video Copy",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"This is my comment 2 shallow head!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/comments/c/68284c3ad1f4c3fb53ecbe5d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"c",
+								"68284c3ad1f4c3fb53ecbe5d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a comment on  a video Copy 2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"This is my comment 2 shallow head!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/comments/c/<comment-id>",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"c",
+								"<comment-id>"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "comment by user 2 to user 1's video"
+		},
+		{
+			"name": "Tweet",
+			"item": [
+				{
+					"name": "create tweet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI4NDZkMWQxZjRjM2ZiNTNlY2JlNDgiLCJlbWFpbCI6InNoeWFtQGt1bWFyLmNvbSIsInVzZXJuYW1lIjoic2h5YW0xMjUiLCJmdWxsTmFtZSI6IlNoeWFtIiwiaWF0IjoxNzQ3NDc1Mzk3LCJleHAiOjE3NDc1NjE3OTd9.wH0CAp4G48YZPfCy3M9DN84Uo_egws3oXmg-0mPXa00; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"This is my first tweet!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/tweets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"tweets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserTweets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/tweets/user/682846d1d1f4c3fb53ecbe48",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"tweets",
+								"user",
+								"682846d1d1f4c3fb53ecbe48"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTweet",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"This is my updated tweet!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/tweets/68285c35f2b38a3275d99ecd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"tweets",
+								"68285c35f2b38a3275d99ecd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTweet Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"This is my updated tweet!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/tweets/68285c35f2b38a3275d99ecd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"tweets",
+								"68285c35f2b38a3275d99ecd"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "StartFragment\n\n#### **Routes to Test**\n\nYour tweet.route.js defines the following routes, all protected by verifyJWT:\n\n1. **POST /api/v1/tweets** (createTweet): Creates a new tweet.\n    \n2. **GET /api/v1/tweets/user/:userId** (getUserTweets): Fetches all tweets by a specific user.\n    \n3. **PATCH /api/v1/tweets/:tweetId** (updateTweet): Updates a tweet’s content.\n    \n4. **DELETE /api/v1/tweets/:tweetId** (deleteTweet): Deletes a tweet.\n    \n\nEndFragment"
+		},
+		{
+			"name": "Likes",
+			"item": [
+				{
+					"name": "toggleVideoLike",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI4NDZkMWQxZjRjM2ZiNTNlY2JlNDgiLCJlbWFpbCI6InNoeWFtQGt1bWFyLmNvbSIsInVzZXJuYW1lIjoic2h5YW0xMjUiLCJmdWxsTmFtZSI6IlNoeWFtIiwiaWF0IjoxNzQ3NDcwMDg2LCJleHAiOjE3NDc1NTY0ODZ9.HrgMP1rcmIeLI-LiSRjByqaOk5j3rFJOq7qFdJ8Vh6c; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"This is a test comment on the video.\",\r\n    \"videoId\": \"68284546d1f4c3fb53ecbe42\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/likes/toggle/v/68284546d1f4c3fb53ecbe42",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"likes",
+								"toggle",
+								"v",
+								"68284546d1f4c3fb53ecbe42"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "toggleCommentLike",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI4NDZkMWQxZjRjM2ZiNTNlY2JlNDgiLCJlbWFpbCI6InNoeWFtQGt1bWFyLmNvbSIsInVzZXJuYW1lIjoic2h5YW0xMjUiLCJmdWxsTmFtZSI6IlNoeWFtIiwiaWF0IjoxNzQ3NDcwMDg2LCJleHAiOjE3NDc1NTY0ODZ9.HrgMP1rcmIeLI-LiSRjByqaOk5j3rFJOq7qFdJ8Vh6c; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"This is a test comment on the video.\",\r\n    \"videoId\": \"68284546d1f4c3fb53ecbe42\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/likes/toggle/c/68284c3ad1f4c3fb53ecbe5d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"likes",
+								"toggle",
+								"c",
+								"68284c3ad1f4c3fb53ecbe5d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "toggleTweetLike",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJlbWFpbCI6InVwZGF0ZWR1c2VyQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJzaGFrdGkiLCJmdWxsTmFtZSI6Im1pdGhpUHJpeWEiLCJpYXQiOjE3NDc0NzYwNjMsImV4cCI6MTc0NzU2MjQ2M30.jLY3UzbFHCDLhiXk9QRMtM0FTU0uLTNbODwYrdvORqI; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"This is a test comment on the video.\",\r\n    \"videoId\": \"68284546d1f4c3fb53ecbe42\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/likes/toggle/t/6828607ff2b38a3275d99ef5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"likes",
+								"toggle",
+								"t",
+								"6828607ff2b38a3275d99ef5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Playlist",
+			"item": [
+				{
+					"name": "createPlaylist",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJlbWFpbCI6InVwZGF0ZWR1c2VyQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJzaGFrdGkiLCJmdWxsTmFtZSI6Im1pdGhpUHJpeWEiLCJpYXQiOjE3NDc0ODYyMjUsImV4cCI6MTc0NzU3MjYyNX0.pc0C-YCWH5HAyJ7MuI4hXLBHAf-2WxA2yeFb0QdTE74; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"My Favorites\",\r\n    \"description\": \"A collection of my favorite videos.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/playlists",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserPlaylists",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJlbWFpbCI6InVwZGF0ZWR1c2VyQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJzaGFrdGkiLCJmdWxsTmFtZSI6Im1pdGhpUHJpeWEiLCJpYXQiOjE3NDc0ODYyMjUsImV4cCI6MTc0NzU3MjYyNX0.pc0C-YCWH5HAyJ7MuI4hXLBHAf-2WxA2yeFb0QdTE74; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"My Favorites\",\r\n    \"description\": \"A collection of my favorite videos.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/playlists/user/68270b7dd97d0846fbccd9da",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"playlists",
+								"user",
+								"68270b7dd97d0846fbccd9da"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPlaylistById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJlbWFpbCI6InVwZGF0ZWR1c2VyQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJzaGFrdGkiLCJmdWxsTmFtZSI6Im1pdGhpUHJpeWEiLCJpYXQiOjE3NDc0ODYyMjUsImV4cCI6MTc0NzU3MjYyNX0.pc0C-YCWH5HAyJ7MuI4hXLBHAf-2WxA2yeFb0QdTE74; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"My Favorites\",\r\n    \"description\": \"A collection of my favorite videos.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/playlists/6828627102f219ea95c57510",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"playlists",
+								"6828627102f219ea95c57510"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addVideoToPlaylist)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJlbWFpbCI6InVwZGF0ZWR1c2VyQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJzaGFrdGkiLCJmdWxsTmFtZSI6Im1pdGhpUHJpeWEiLCJpYXQiOjE3NDc0ODg0MTAsImV4cCI6MTc0NzU3NDgxMH0.I7DDeR0pyFoyV0MuvnfpkM3sMNHKzHHSxCAkkveKWVY; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/playlists/add/68284546d1f4c3fb53ecbe42/6828627102f219ea95c57510",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"playlists",
+								"add",
+								"68284546d1f4c3fb53ecbe42",
+								"6828627102f219ea95c57510"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeVideoFromPlaylist",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJlbWFpbCI6InVwZGF0ZWR1c2VyQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJzaGFrdGkiLCJmdWxsTmFtZSI6Im1pdGhpUHJpeWEiLCJpYXQiOjE3NDc0ODg0MTAsImV4cCI6MTc0NzU3NDgxMH0.I7DDeR0pyFoyV0MuvnfpkM3sMNHKzHHSxCAkkveKWVY; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"My Favorites\",\r\n    \"description\": \"A collection of my favorite videos.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/playlists/remove/<video1-id>/<playlist1-id>",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"playlists",
+								"remove",
+								"<video1-id>",
+								"<playlist1-id>"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePlaylist",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJlbWFpbCI6InVwZGF0ZWR1c2VyQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJzaGFrdGkiLCJmdWxsTmFtZSI6Im1pdGhpUHJpeWEiLCJpYXQiOjE3NDc0ODg0MTAsImV4cCI6MTc0NzU3NDgxMH0.I7DDeR0pyFoyV0MuvnfpkM3sMNHKzHHSxCAkkveKWVY; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Updated Favorites\",\r\n    \"description\": \"Updated description.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/playlists/6828627102f219ea95c57510",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"playlists",
+								"6828627102f219ea95c57510"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePlaylist",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJlbWFpbCI6InVwZGF0ZWR1c2VyQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJzaGFrdGkiLCJmdWxsTmFtZSI6Im1pdGhpUHJpeWEiLCJpYXQiOjE3NDc0ODg0MTAsImV4cCI6MTc0NzU3NDgxMH0.I7DDeR0pyFoyV0MuvnfpkM3sMNHKzHHSxCAkkveKWVY; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"My Favorites\",\r\n    \"description\": \"A collection of my favorite videos.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/playlists/6828627102f219ea95c57510",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"playlists",
+								"6828627102f219ea95c57510"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Routes** (from playlist.routes.js):  \n\n- POST /api/v1/playlists: Create a playlist.\n    \n- GET /api/v1/playlists/:playlistId: Get a playlist by ID.\n    \n- PATCH /api/v1/playlists/:playlistId: Update a playlist.\n    \n- DELETE /api/v1/playlists/:playlistId: Delete a playlist.\n    \n- PATCH /api/v1/playlists/add/:videoId/:playlistId: Add a video to a playlist.\n    \n- PATCH /api/v1/playlists/remove/:videoId/:playlistId: Remove a video from a playlist.\n    \n- GET /api/v1/playlists/user/:userId: Get playlists by a user."
+		},
+		{
+			"name": "Subscriptions",
+			"item": [
+				{
+					"name": "toggleSubscription",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI4ODI5OTAyZjIxOWVhOTVjNTc1MjQiLCJlbWFpbCI6InNoeWFtQGtpc2hvcmkuY29tIiwidXNlcm5hbWUiOiJyYWRoaWthIiwiZnVsbE5hbWUiOiJSYWRoYSBrdW1hcmkiLCJpYXQiOjE3NDc0ODk1NjcsImV4cCI6MTc0NzU3NTk2N30.dcOjAoOq3tCeMPexRnZw5cnSyvaItcji-OPR6VifArw; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/subscriptions/c/68270b7dd97d0846fbccd9da",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"subscriptions",
+								"c",
+								"68270b7dd97d0846fbccd9da"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserChannelSubscribers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/subscriptions/c/6828829902f219ea95c57524",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"subscriptions",
+								"c",
+								"6828829902f219ea95c57524"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSubscribedChannels",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/subscriptions/u/6828829902f219ea95c57524",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"subscriptions",
+								"u",
+								"6828829902f219ea95c57524"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "StartFragment**Routes** (from subscription.routes.js):  \n\n- POST /api/v1/subscriptions/c/:channelId: Toggle subscription.\n    \n- GET /api/v1/subscriptions/c/:channelId: Get subscribed channels (likely a typo in the route; should be for getUserChannelSubscribers).\n    \n- GET /api/v1/subscriptions/u/:subscriberId: Get channels the user has subscribed to.\n    \n\nEndFragment"
+		},
+		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "getChannelStats",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI4ODI5OTAyZjIxOWVhOTVjNTc1MjQiLCJlbWFpbCI6InNoeWFtQGtpc2hvcmkuY29tIiwidXNlcm5hbWUiOiJyYWRoaWthIiwiZnVsbE5hbWUiOiJSYWRoYSBrdW1hcmkiLCJpYXQiOjE3NDc0ODk1NjcsImV4cCI6MTc0NzU3NTk2N30.dcOjAoOq3tCeMPexRnZw5cnSyvaItcji-OPR6VifArw; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/dashboard/stats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"dashboard",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getChannelVideos verify",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI3MGI3ZGQ5N2QwODQ2ZmJjY2Q5ZGEiLCJlbWFpbCI6InVwZGF0ZWR1c2VyQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJzaGFrdGkiLCJmdWxsTmFtZSI6Im1pdGhpUHJpeWEiLCJpYXQiOjE3NDc0OTQ3ODAsImV4cCI6MTc0NzU4MTE4MH0.O4dN42fO0oiTmiHPpVjwq3i_hKmIVH8w_owSbugPSzE; Path=/; Secure; HttpOnly;",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/dashboard/videos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"dashboard",
+								"videos"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "StartFragment\n\n#### **Routes to Test**\n\nYour dashboard.routes.js defines the following routes, all protected by verifyJWT:\n\n1. **GET /api/v1/dashboard/stats** (getChannelStats): Fetches channel statistics.\n    \n2. **GET /api/v1/dashboard/videos** (getChannelVideos): Fetches all videos uploaded by the channel.\n    \n\nEndFragment"
+		},
+		{
+			"name": "HealthCheck/Care",
+			"item": [
+				{
+					"name": "Get Healthcheck",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/healthcheck",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"healthcheck"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "StartFragment\n\nThe healthcheck route doesn’t require any specific data (e.g., users, videos) because it’s a simple status check. It also doesn’t require authentication since verifyJWT middleware isn’t applied in healthcheck.routes.js. You just need to ensure the server is running.\n\nEndFragment"
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": "http://localhost:8000/api/v1",
+			"type": "default"
+		}
+	]
+}
