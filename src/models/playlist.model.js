@@ -1,6 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-// we would be liking videos, comments, tweets
-// agar later on we get more videos uploaded from a single playlist then we can add the pagination
+
 const playlistSchema = new Schema({
     name: {
         type: String,
@@ -8,16 +7,16 @@ const playlistSchema = new Schema({
     },
     description: {
         type: String,
-        required: true
+        default: ""  // Optional, with a default value of empty string
     },
     videos: [{
-        // videos of a playlist will be an array of objects (ie. key-value pairs of  ObjectId and ref)
         type: Schema.Types.ObjectId,
         ref: "Video"
     }],
-    creator: {
+    owner: {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: "User",
+        required: true
     }
 }, { timestamps: true })
 

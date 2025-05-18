@@ -201,7 +201,7 @@ The following environment variables are required in the `.env` file:
 
 * `/subscriptions`: Subscribe to channels.
 * `/playlists`: Create and manage playlists.
-* `/dashboard`: Creator analytics dashboard.
+* `/dashboard`: owner analytics dashboard.
 
 ## Testing
 

@@ -12,7 +12,7 @@ const getAllVideos = asyncHandler(async (req, res) => {
     const pipeline = [];
     const matchStage = { isPublished: true };
     if (userId && isValidObjectId(userId)) {
-        matchStage.creator = new mongoose.Types.ObjectId(userId);
+        matchStage.owner = new mongoose.Types.ObjectId(userId);
     }
     if (query) {
         matchStage.$or = [
@@ -25,15 +25,15 @@ const getAllVideos = asyncHandler(async (req, res) => {
     pipeline.push({
         $lookup: {
             from: "users",
-            localField: "creator",
+            localField: "owner",
             foreignField: "_id",
-            as: "creator",
+            as: "owner",
             pipeline: [
                 { $project: { username: 1, avatar: 1 } }
             ]
         }
     });
-    pipeline.push({ $unwind: "$creator" });
+    pipeline.push({ $unwind: "$owner" });
 
     const sortStage = {};
     sortStage[sortBy] = sortType === "asc" ? 1 : -1;
@@ -82,7 +82,7 @@ const publishAVideo = asyncHandler(async (req, res) => {
         title,
         description,
         duration: videoFile.duration || 0,
-        creator: req.user._id,
+        owner: req.user._id,
         isPublished: true
     });
 
@@ -103,7 +103,7 @@ const getVideoById = asyncHandler(async (req, res) => {
     }
 
     const video = await Video.findById(videoId)
-        .populate("creator", "username avatar");
+        .populate("owner", "username avatar");
 
     if (!video) {
         throw new ApiError(404, "Video not found.");
@@ -127,7 +127,7 @@ const updateVideo = asyncHandler(async (req, res) => {
         throw new ApiError(404, "Video not found.");
     }
 
-    if (video.creator.toString() !== req.user._id.toString()) {
+    if (video.owner.toString() !== req.user._id.toString()) {
         throw new ApiError(403, "You are not authorized to update this video.");
     }
 
@@ -166,7 +166,7 @@ const deleteVideo = asyncHandler(async (req, res) => {
         throw new ApiError(404, "Video not found.");
     }
 
-    if (video.creator.toString() !== req.user._id.toString()) {
+    if (video.owner.toString() !== req.user._id.toString()) {
         throw new ApiError(403, "You are not authorized to delete this video.");
     }
 
@@ -198,7 +198,7 @@ const togglePublishStatus = asyncHandler(async (req, res) => {
         throw new ApiError(404, "Video not found.");
     }
 
-    if (video.creator.toString() !== req.user._id.toString()) {
+    if (video.owner.toString() !== req.user._id.toString()) {
         throw new ApiError(403, "You are not authorized to toggle the publish status of this video.");
     }
 

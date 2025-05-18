@@ -140,9 +140,9 @@ const getLikedVideos = asyncHandler(async (req, res) => {
     })
         .populate({
             path: "video",
-            select: "title description thumbnail videoFile duration creator",
+            select: "title description thumbnail videoFile duration owner",
             populate: {
-                path: "creator",
+                path: "owner",
                 select: "username avatar"
             }
         });
