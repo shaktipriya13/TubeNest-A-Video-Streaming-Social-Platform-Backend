@@ -155,7 +155,7 @@ Easily test and explore the TubeNest APIs using the provided Postman collection,
 
 The server runs on `http://localhost:8000` by default.
 
-## Project StructureTubeNest-A-Video-Streaming-Social-Platform-Backend/
+## Project Structure
 
 ```
 
