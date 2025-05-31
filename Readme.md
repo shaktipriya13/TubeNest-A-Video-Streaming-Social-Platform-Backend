@@ -56,33 +56,38 @@ The backend is live and accessible for testing with the Postman collection.
 
 Easily test and explore the TubeNest APIs using the provided Postman collection, which includes pre-configured requests for all major endpoints.
 
-* **Download Postman Collection** : [TubeNest Backend API Collection](https://grok.com/chat/docs/TubeNest-Backend-API-Collection.json)
-* **Download Postman Environment (Optional)** : [TubeNest Backend Environment](https://grok.com/chat/docs/TubeNest-Backend-Env.json)
-* **Public Postman Workspace** : *(Add a public link if you choose to share it on Postman’s public workspace)*
+- **Download Postman Collection**:  
+  🔗 [TubeNest Backend API Collection](https://github.com/shaktipriya13/TubeNest-A-Video-Streaming-Social-Platform-Backend/raw/main/docs/TubeNest-Backend-API-Collection.json)
 
-### How to Use the Postman Collection
+> You can import this collection into Postman to test all available backend endpoints directly.
+> Make sure to replace variables like `{{base_url}}` with the actual API base URL:  
+> `https://tubenest-backend-a-video-streaming-social.onrender.com`
 
-1. **Import the Collection** :
+## How to Use the Postman Collection
 
-* Download the Postman collection from the link above.
-* In Postman, click **Import** >  **Choose Files** , and select `TubeNest-Backend-API-Collection.json`.
-* (Optional) Import the environment file `TubeNest-Backend-Env.json` if you downloaded it.
+### 📥 Import the Collection:
+1. Download the Postman collection from the link above.
+2. In Postman, go to **Import > Files**, and select `TubeNest-Backend-API-Collection.json`.
 
-1. **Set the Base URL** :
+### 🌐 Set the Base URL:
+Since the environment file is not included, you’ll need to manually set the base URL:
+- Replace all instances of `{{base_url}}` in the request URLs with:  
+  `https://tubenest-backend-a-video-streaming-social.onrender.com`
 
-* If you imported the environment, select `TubeNest Backend Env` in Postman’s environment dropdown.
-* Otherwise, manually set the base URL to `https://tubenest-a-video-streaming-social.onrender.com/` in each request.
+### 🚀 Test Endpoints:
 
-1. **Test Endpoints** :
+#### ✅ Unauthenticated Endpoints:
+- `GET /api/v1/healthcheck` – Check server health.
+- `POST /api/v1/users/register` – Register a user.
+- `POST /api/v1/users/login` – Log in a user.
 
-* Start with unauthenticated endpoints:
-  * `GET /api/v1/healthcheck`: Check server health.
-  * `POST /api/v1/users/register`: Register a user.
-  * `POST /api/v1/users/login`: Login a user.
-* For protected endpoints (e.g., `POST /api/v1/videos`):
-  * First, log in using `POST /api/v1/users/login` to get a JWT token.
-  * Copy the `accessToken` from the response.
-  * Add the token to the request’s **Authorization** header as `Bearer <token>`.
+#### 🔐 Protected Endpoints (e.g., `POST /api/v1/videos`):
+1. Log in using `POST /api/v1/users/login` to receive a **JWT access token**.
+2. Copy the `accessToken` from the response.
+3. Add the token in the request’s **Authorization header**:
+Authorization: Bearer <your_token_here>
+> This setup allows you to interact with the full range of authenticated and unauthenticated TubeNest API endpoints directly from Postman.
+
 
 ### Example Requests
 
