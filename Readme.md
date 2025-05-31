@@ -10,14 +10,14 @@ TubeNest is a scalable RESTful API backend for a YouTube-like video streaming an
 
 * [Key Features](#key-features)
 * [Tech Stack](#tech-stack)
-* [Live Deployment](e#live-deployment)
+* [Live Deployment](#live-deployment)
 * [API Documentation](#api-documentation)
-* [Setup Locally](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#setup-locally)
-* [Project Structure](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#project-structure)
-* [Environment Variables](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#environment-variables)
-* [API Endpoints](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#api-endpoints)
-* [Testing](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#testing)
-* [Contributing](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#contributing)
+* [Setup Locally](#setup-locally)
+* [Project Structure](#project-structure)
+* [Environment Variables](#environment-variables)
+* [API Endpoints](#api-endpoints)
+* [Testing](#testing)
+* [Contributing](#contributing)
 
 ## Key Features
 
@@ -147,7 +147,7 @@ Easily test and explore the TubeNest APIs using the provided Postman collection,
    ```bash
    npm install
    ```
-3. Create a `.env` file in the root directory (see [Environment Variables](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#environment-variables)).
+3. Create a `.env` file in the root directory (see [Environment Variables](#environment-variables)).
 4. Start the server:
    ```bash
    npm start
@@ -276,7 +276,7 @@ REFRESH_TOKEN_EXPIRY=10d
 ## Testing
 
 1. Start the server locally or use the live deployment URL.
-2. Import the Postman collection from the [API Documentation](https://grok.com/chat/919543d5-a15f-4ba4-ba21-f0bd4f1b7035?referrer=website#api-documentation) section.
+2. Import the Postman collection from the [API Documentation](#api-documentation) section.
 3. Test unauthenticated routes (e.g., `/users/register`, `/users/login`).
 4. Obtain a JWT token via `/users/login` and add it to the `Authorization` header (`Bearer <token>`) for protected routes.
 5. Example: Test `POST /api/v1/videos` with a video file and thumbnail.
