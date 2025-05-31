@@ -46,7 +46,8 @@ TubeNest is a scalable RESTful API backend for a YouTube-like video streaming an
 
 ## Live Deployment
 
-* **API Base URL** : [https://tubenest-a-video-streaming-social.onrender.com/](https://tubenest-a-video-streaming-social.onrender.com/)
+* **API Base URL**:  
+  🔗 [https://tubenest-backend-a-video-streaming-social.onrender.com/](https://tubenest-backend-a-video-streaming-social.onrender.com/)
 * **Note** : The backend is deployed on Render’s free tier, so it may spin down after inactivity. The first request after a period of inactivity might take a few seconds to respond while the server spins up.
 
 The backend is live and accessible for testing with the Postman collection.
