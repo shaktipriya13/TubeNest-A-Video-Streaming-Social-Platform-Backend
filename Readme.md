@@ -56,9 +56,12 @@ The backend is live and accessible for testing with the Postman collection.
 
 Easily test and explore the TubeNest APIs using the provided Postman collection, which includes pre-configured requests for all major endpoints.
 
-* **Download Postman Collection** : [TubeNest Backend API Collection](https://grok.com/chat/docs/TubeNest-Backend-API-Collection.json)
-* **Download Postman Environment (Optional)** : [TubeNest Backend Environment](https://grok.com/chat/docs/TubeNest-Backend-Env.json)
-* **Public Postman Workspace** : *(Add a public link if you choose to share it on Postman’s public workspace)*
+- **Download Postman Collection**:  
+  🔗 [TubeNest Backend API Collection](https://github.com/shaktipriya13/TubeNest-A-Video-Streaming-Social-Platform-Backend/raw/main/docs/TubeNest-Backend-API-Collection.json)
+
+> You can import this collection into Postman to test all available backend endpoints directly.
+> Make sure to replace variables like `{{base_url}}` with the actual API base URL:  
+> `https://tubenest-backend-a-video-streaming-social.onrender.com`
 
 ## How to Use the Postman Collection
 
